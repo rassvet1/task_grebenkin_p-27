@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+
+    class PiggyBank {
+
+
+    #balance = 0;
+
+    put(amount) {
+        if (amount <= 0)
+        
+        {
+
+        console.log("не правильная цена"); return;
+
+        }
+
+                this.#balance += amount;
+    }
+
+    take(amount) {
+
+        if (amount > this.#balance)
+        
+        {
+           console.log("Ндостаточно средств");
+        return;
+        
+        }
+
+        this.#balance -= amount;
+    }
+
+    getbalance() {
+        return this.#balance;
+    }
+    }
+
+    const bank = new PiggyBank();
+
+    bank.put(100);
+    
+    bank.put(50);
+
+    bank.take(30);
+
+    console.log(bank.getbalance());
+
+    bank.take(1000);
+
+
+    bank.put(-5);
+        
+
+    class Animal {
+
+
+
+    constructor(name) {
+        this.name = name;
+    }
+
+        speak() {
+            console.log(`${this.name} издаёт звук`);
+        }
+    }
+
+    class Cat extends Animal {
+        speak() {
+            console.log(`${this.name} говорит: Мяу`);
+        }
+    }
+
+    //чуть гугла
+    class Dog extends Animal {
+        speak() {
+            console.log(`${this.name} говорит:  Гав`);
+        }
+
+        fetch() {
+            console.log(`${this.name }   принёс палку`);
+        }
+    }
+
+    const animals = [
+
+    new Animal("Животные"),
+
+    new Cat("муся"),
+
+    new Cat("барбосина"),
+
+    new Dog("барбос"),
+
+    ];
+
+    
+
+    for (const animal of animals) {
+        animal.speak();
+
+
+        if (animal instanceof Dog) {
+           
+            animal.fetch();
+
+
+        }
+    }
+
+    
+    class Task {
+
+
+    constructor(title) {
+        this.title = title;
+
+
+        this.done = false;
+    }
+
+    complete() {
+        
+        this.done = true;
+    }
+
+    toString() {
+
+        return `${this.done ? "[x]"   : "[ ]"  } ${this.title}`;
+    }
+    }
+
+    class TodList {
+
+    constructor() {
+
+
+        this.tasks = [];
+    }
+
+    add(title) {
+
+        this.tasks.push(new Task(title));
+    }
+
+        complete(index) {
+
+        if (this.tasks[index]) {
+
+        this.tasks[index].complete();
+        }
+    }
+
+    print() {
+        for (const task of this.tasks) {
+
+        console.log(String(task));
+
+        }
+    }
+
+    countDone() {
+        return this.tasks.filter ((t) => t.done).length;
+    }
+    }   //uгуглил
+
+    const list = new TodList();
+    list.add("Купить хлеб");
+
+    list.add("сделать уборку");
+    
+    list.add("Погулять с друзьями");
+
+    list.complete(0);
+
+    list.complete(2);
+
+    list.print();
+
+    console.log(list.countDone());
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>
